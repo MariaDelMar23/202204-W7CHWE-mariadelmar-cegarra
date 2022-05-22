@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 
 const urlApi = process.env.REACT_APP_API_URL;
@@ -16,14 +15,18 @@ const RegisterForm = () => {
     setformData({ ...formData, [event.target.id]: event.target.value });
   };
 
-  const register = (event) => {
+  const register = async (event) => {
     event.preventDefault();
     const newUser = new FormData();
     newUser.append("name", formData.name);
     newUser.append("username", formData.username);
     newUser.append("password", formData.password);
     newUser.append("image", formData.image);
-    axios.post();
+
+    await fetch(`${urlApi}/users/register`, {
+      method: "POST",
+      body: newUser,
+    });
   };
 
   return (
@@ -53,7 +56,7 @@ const RegisterForm = () => {
       <label htmlFor="image"></label>
       <input
         id="image"
-        type="url"
+        type="file"
         onChange={changeForm}
         value={formData.image}
       />
