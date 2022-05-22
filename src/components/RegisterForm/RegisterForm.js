@@ -23,7 +23,7 @@ const RegisterForm = () => {
     newUser.append("password", formData.password);
     newUser.append("image", formData.image);
 
-    await fetch(`${urlApi}/users/register`, {
+    await fetch(`${urlApi}/user/register`, {
       method: "POST",
       body: newUser,
     });
