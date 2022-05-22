@@ -13,6 +13,7 @@ const LoginForm = () => {
   const changeForm = (event) => {
     setformData({ ...formData, [event.target.id]: event.target.value });
   };
+
   const logIn = (event) => {
     event.preventDefault();
     dispatch(logInThunk(formData));
