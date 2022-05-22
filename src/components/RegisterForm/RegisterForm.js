@@ -1,4 +1,7 @@
+import axios from "axios";
 import { useState } from "react";
+
+const urlApi = process.env.REACT_APP_API_URL;
 
 const RegisterForm = () => {
   const emptyForm = {
@@ -15,6 +18,12 @@ const RegisterForm = () => {
 
   const register = (event) => {
     event.preventDefault();
+    const newUser = new FormData();
+    newUser.append("name", formData.name);
+    newUser.append("username", formData.username);
+    newUser.append("password", formData.password);
+    newUser.append("image", formData.image);
+    axios.post();
   };
 
   return (
@@ -44,7 +53,7 @@ const RegisterForm = () => {
       <label htmlFor="image"></label>
       <input
         id="image"
-        type="file"
+        type="url"
         onChange={changeForm}
         value={formData.image}
       />

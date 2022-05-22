@@ -5,7 +5,12 @@ import RegisterForm from "../components/RegisterForm/RegisterForm";
 const WelcomePage = () => {
   const user = useSelector((state) => state.user);
 
-  return <>{user === {} ? <RegisterForm /> : <LoginForm />}</>;
+  return (
+    <>
+      <RegisterForm />
+      <LoginForm />
+    </>
+  );
 };
 
 export default WelcomePage;

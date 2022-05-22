@@ -1,10 +1,9 @@
-import LoginForm from "./components/LoginForm/LoginForm";
 import WelcomePage from "./pages/WelcomePage";
 
 function App() {
   return (
     <>
-      <p>uwu</p>
+      <h1>FRIENEMIES</h1>
       <WelcomePage />
     </>
   );
