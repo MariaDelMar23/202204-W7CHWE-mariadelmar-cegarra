@@ -3,11 +3,10 @@ import { getUsersActionCreator } from "../redux/features/UsersSlice";
 
 const urlApi = process.env.REACT_APP_API_URL;
 
-const getUsers = () => async (dispatch) => {
-  const token = localStorage.getItem("token");
+const getUsersThunk = (token) => async (dispatch) => {
   const { status, data } = await axios.get(`${urlApi}/user/users`, {
     headers: {
-      authentication: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   });
   if (status === 200) {
@@ -15,4 +14,4 @@ const getUsers = () => async (dispatch) => {
   }
 };
 
-export default getUsers;
+export default getUsersThunk;

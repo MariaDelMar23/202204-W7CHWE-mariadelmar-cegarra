@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Navigate } from "react-router";
+import { NavLink } from "react-router-dom";
 
 const urlApi = process.env.REACT_APP_API_URL;
 
@@ -27,10 +29,12 @@ const RegisterForm = () => {
       method: "POST",
       body: newUser,
     });
+
+    window.location.href = "/user/login";
   };
 
   return (
-    <form action="login" autoComplete="off" noValidate>
+    <form action="register" autoComplete="off" noValidate>
       <label htmlFor="username"></label>
       <input
         id="username"
@@ -61,6 +65,9 @@ const RegisterForm = () => {
         value={formData.image}
       />
       <input type="submit" value="REGISTER" onClick={register} />
+      <p>
+        Already have an account?{<NavLink to="/user/login">Click here</NavLink>}{" "}
+      </p>
     </form>
   );
 };
