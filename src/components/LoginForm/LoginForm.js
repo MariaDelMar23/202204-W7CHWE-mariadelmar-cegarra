@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Navigate } from "react-router";
+import { NavLink } from "react-router-dom";
 import logInThunk from "../../thunks/userThunks";
 
 const LoginForm = () => {
@@ -14,10 +16,11 @@ const LoginForm = () => {
     setformData({ ...formData, [event.target.id]: event.target.value });
   };
 
-  const logIn = (event) => {
+  const logIn = async (event) => {
     event.preventDefault();
-    dispatch(logInThunk(formData));
+    await dispatch(logInThunk(formData));
     setformData(emptyForm);
+    window.location.href = "users";
   };
 
   return (
@@ -37,6 +40,10 @@ const LoginForm = () => {
         value={formData.password}
       />
       <input type="submit" value="LOG IN" onClick={logIn} />
+      <p>
+        Don't have an account?
+        {<NavLink to="/user/register">Click here</NavLink>}{" "}
+      </p>
     </form>
   );
 };

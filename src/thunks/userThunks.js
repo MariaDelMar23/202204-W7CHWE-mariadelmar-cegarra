@@ -6,7 +6,7 @@ const urlApi = process.env.REACT_APP_API_URL;
 
 const logInThunk = (formData) => async (dispatch) => {
   const { username, password } = formData;
-  const { status, data } = await axios.post(`${urlApi}/users/login`, {
+  const { status, data } = await axios.post(`${urlApi}/user/login`, {
     username,
     password,
   });
